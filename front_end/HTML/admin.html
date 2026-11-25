@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Painel do Administrador — NÓRD</title>
+	<!-- Materialize CSS + ícones -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<style>
+		body { display: flex; min-height: 100vh; flex-direction: column; background: #f4f6f9; }
+		main { flex: 1 0 auto; padding-top: 24px; }
+		.brand-logo { font-weight: 700; letter-spacing: 1px; }
+		.stat-card .card-content { display: flex; align-items: center; justify-content: space-between; }
+		.stat-card h4 { margin: 0; }
+		#busca-wrap { margin-top: 0; }
+	</style>
+</head>
+<body>
+	<nav class="blue darken-4">
+		<div class="nav-wrapper container">
+			<a href="index.html" class="brand-logo">NÓRD.</a>
+			<ul class="right">
+				<li><a href="index.html"><i class="material-icons left">store</i>Loja</a></li>
+				<li><a href="account.html"><i class="material-icons left">person</i>Minha conta</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<main class="container">
+		<h4>Painel do Administrador</h4>
+		<p class="grey-text text-darken-1">Listagem de todos os usuários cadastrados no banco de dados.</p>
+
+		<div id="aviso" class="card-panel red lighten-4 red-text text-darken-4" style="display:none"></div>
+
+		<div id="painel" style="display:none">
+			<div class="row">
+				<div class="col s12 m4"><div class="card stat-card"><div class="card-content"><div><span class="grey-text">Usuários</span><h4 id="total-usuarios">0</h4></div><i class="material-icons medium blue-text">group</i></div></div></div>
+				<div class="col s12 m4"><div class="card stat-card"><div class="card-content"><div><span class="grey-text">Administradores</span><h4 id="total-admins">0</h4></div><i class="material-icons medium orange-text">admin_panel_settings</i></div></div></div>
+				<div class="col s12 m4"><div class="card stat-card"><div class="card-content"><div><span class="grey-text">Pedidos</span><h4 id="total-pedidos">0</h4></div><i class="material-icons medium green-text">receipt_long</i></div></div></div>
+			</div>
+
+			<div class="card">
+				<div class="card-content">
+					<div class="row" style="margin-bottom:0">
+						<div class="input-field col s12 m8" id="busca-wrap">
+							<i class="material-icons prefix">search</i>
+							<input id="busca" type="text">
+							<label for="busca">Buscar por nome ou e-mail</label>
+						</div>
+						<div class="col s12 m4 right-align" style="padding-top:20px">
+							<button id="exportar-pdf" class="btn waves-effect waves-light red darken-2"><i class="material-icons left">picture_as_pdf</i>Exportar PDF</button>
+						</div>
+					</div>
+					<table class="striped highlight responsive-table">
+						<thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Tema</th><th>Pedidos</th><th>Tipo</th></tr></thead>
+						<tbody id="tabela-usuarios"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="carregando" class="center-align" style="padding:40px"><div class="preloader-wrapper active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div></div>
+	</main>
+
+	<footer class="page-footer blue darken-4"><div class="footer-copyright"><div class="container">© 2025 NÓRD STORE — Área administrativa</div></div></footer>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+	<script src="admin.js"></script>
+</body>
+</html>
